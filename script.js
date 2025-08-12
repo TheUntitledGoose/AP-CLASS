@@ -57,9 +57,9 @@ window.addEventListener("message", (event) => {
             for (let q = 0; q < questions.length; q++) {
                 values.push(questions[q].value);
                 if (questions[q].value === questionText) {
-                    answers[i].correct_answer += ` [${questions[q].value}]`;
+                    answers[i].correct_answer += ` [${String.fromCharCode(65 + (q) )}]`;
                 } else {
-                    answers[i].correct_answer += ' ' + questions[q].value;
+                    answers[i].correct_answer += ' ' + String.fromCharCode(65 + (q) );
                 }
             }
         }
