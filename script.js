@@ -90,7 +90,19 @@ window.addEventListener("message", (event) => {
 
             function animate() {
                 ctx.clearRect(0, 0, c.width, c.height);
+
+                if (document.querySelector('.current-item-pos')) {
+                    const question_id = parseInt(document.querySelector('.current-item-pos').textContent.trim().split(' ')[0]);
+                    
+                    for (let a = 0; a < answers.length; a++) {
+                        const answer = answers[a];
+                        imgui.elements[a].text = question_id == (a+1) ? `> ${answer.message} ${answer.correct_answer}` : `${answer.message} ${answer.correct_answer}`;
+                        imgui.elements[a].color = question_id == (a+1) ? "green" : "white";
+                    }
+                }
+
                 imgui.draw();
+
                 unsafeWindow.requestAnimationFrame(animate);
             }
             unsafeWindow.requestAnimationFrame(animate);
